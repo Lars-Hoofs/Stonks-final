@@ -68,13 +68,13 @@ class ProductController extends Controller
     {
         $request->validate([
             'pizza-naam' => 'required|string',
-            'plaatje' => 'required|url', // Verander 'url' naar de gewenste validatie
+            'plaatje' => 'required|url', 
             'ingredient' => 'required|numeric',
         ]);
     
         $pizza = new Pizza([
             'pizza-naam' => $request->input('pizza-naam'),
-            'plaatje' => $request->input('plaatje'), // Nu nemen we de URL direct van het invoerveld
+            'plaatje' => $request->input('plaatje'), 
             'ingredient_id' => $request->input('ingredient'),
         ]);
     
