@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('pizza', function (Blueprint $table) {
             $table->id();
-            $table->string('pizza-naam')->nullable();
+            $table->string('pizza_naam')->nullable();
             $table->string('plaatje');
-            $table->unsignedBigInteger('ingredient_id')->constrained('ingredients');
             $table->timestamps();
-
-            $table->foreign('ingredient_id')->references('id')->on('ingredients');
         });
     }
 

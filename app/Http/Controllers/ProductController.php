@@ -14,8 +14,7 @@ class ProductController extends Controller
     public function index()
     {
         $pizzas = Pizza::all(); 
-
-
+    
         return view('products.index', ['pizzas' => $pizzas]);
     }
     public function create()
@@ -68,22 +67,22 @@ class ProductController extends Controller
     {
         $request->validate([
             'pizza-naam' => 'required|string',
-            'plaatje' => 'required|url', 
-            'ingredient' => 'required|numeric',
+            'plaatje' => 'required|url',
+            'ingredient' => 'required|array', // Verander naar 'ingredient' in plaats van 'ingredient-naam'
+            'ingredient.*' => 'exists:ingredients,id', // Controleer of elk ingrediënt bestaat
         ]);
     
         $pizza = new Pizza([
-            'pizza-naam' => $request->input('pizza-naam'),
-            'plaatje' => $request->input('plaatje'), 
-            'ingredient_id' => $request->input('ingredient'),
+            'pizza_naam' => $request->input('pizza-naam'),
+            'plaatje' => $request->input('plaatje'),
         ]);
     
         $pizza->save();
     
+        // Attach ingrediënten aan de pizza
+        $pizza->ingredients()->attach($request->input('ingredient'));
+    
         return redirect()->route('products.create');
     }
-    public function show(Pizza $pizza)
-    {
-        return view('products.show', compact('pizza'));
-    }
 }
+

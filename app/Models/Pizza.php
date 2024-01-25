@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pizza extends Model
 {
+    use HasFactory;
+
     protected $table = 'pizza';
 
     protected $fillable = [
-        'pizza-naam', 'plaatje', 'ingredient_id',
+        'pizza_naam', 'plaatje',
     ];
 
-    public function ingredient()
+    public function ingredients()
     {
-        return $this->belongsTo(Ingredient::class);
+        return $this->belongsToMany(Ingredient::class, 'pizza_ingredient');
     }
 }
