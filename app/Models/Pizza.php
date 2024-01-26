@@ -19,4 +19,9 @@ class Pizza extends Model
     {
         return $this->belongsToMany(Ingredient::class, 'pizza_ingredient');
     }
+    public function calculatePrice()
+    {
+
+        return $this->ingredients()->sum('prijs');
+    }
 }
