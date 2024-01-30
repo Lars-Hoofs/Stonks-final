@@ -269,9 +269,6 @@ public function removePizza($id)
     return redirect()->route('products.create')->with('success', 'Pizza removed successfully');
 }
 
-public function home(){
-    return redirect()->route('home');
 
-}
 
 }

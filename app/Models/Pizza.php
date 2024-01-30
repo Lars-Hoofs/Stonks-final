@@ -21,7 +21,6 @@ class Pizza extends Model
     }
     public function calculatePrice()
     {
-
         return $this->ingredients()->sum('prijs');
     }
 }
