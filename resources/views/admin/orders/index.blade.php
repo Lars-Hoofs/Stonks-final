@@ -3,6 +3,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+<a href="{{ route('products.create')}}">maak Pizza/Ingredient/Unit</a>
     <h1>Admin Orders</h1>
 
     @foreach ($orders as $order)
@@ -26,4 +28,5 @@
 </form>
         </div>
     @endforeach
+
 @endsection

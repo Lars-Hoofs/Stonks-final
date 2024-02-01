@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white p-6 rounded-lg shadow-md">
+    <div class=" p-6 rounded-lg shadow-md">
         <h1 class="text-4xl font-bold mb-8">Winkelwagen</h1>
 
         @if ($cartItems->isEmpty())
@@ -24,10 +24,10 @@
             <form action="{{ route('cart.checkout') }}" method="post">
                 @csrf
                 @method('delete')
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Betalen</button>
+                <button type="submit" class="bg-blue-500 px-4 py-2 rounded">Betalen</button>
             </form>
         @endif
     </div>
 
-    <li><a href="{{ route('admin.orders.index') }}">Admin Orders</a></li>
+ 
 @endsection

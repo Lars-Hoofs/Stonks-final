@@ -20,8 +20,17 @@ use App\Http\Controllers\OrdersController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('public.index');
+})->name('public.index');
+
+
+Route::get('/winkels', function () {
+    return view('public.winkels');
+})->name('public.winkels');
+
+Route::get('/login-admin', function (){
+    return view('public.login');
+})->name('public.login');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
